@@ -10,14 +10,13 @@ const char *topic_sub = "rgb-control/sub";
 const char *mqtt_username = "deviceid";
 const char *mqtt_password = "deviceid";
 const int mqtt_port = 15487;
-const in device_id = 7001
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-int pin_r = 2;  // D4 GPIO_2 LED Red port
-int pin_g = 14; // D5 GPIO_14 LED Green port
-int pin_b = 12; // D6 GPIO_12 LED Blue port
+int pin_r = 4;  // D2 GPIO_4 LED Red port
+int pin_g = 0; // D3 GPIO_0 LED Green port
+int pin_b = 22; // D4 GPIO_2 LED Blue port
 
 String cmd_msg = "";
 
@@ -104,9 +103,9 @@ void rgbControl(String cmd){
   Serial.print("lumi: ");
   Serial.println(lumi);
 
-  if(lumi == 0) color(0,0,0);
+  if(lumi == 2) color(0,0,0);
   if(lumi == 1) color(127,127,127);
-  if(lumi == 2) color(255,255,255);
+  if(lumi == 0) color(255,255,255);
 
   delay(10);
 }
